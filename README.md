@@ -32,7 +32,15 @@ In this work, five supervised classifiers have been implemented: Logistic Regres
 
 ### Observations
 
-All of the implemented models are trained and fitted with the dataset. Here we found that Logistic Regression, Decision Tree, KNN, Naive Bayes and Random Forest achieve accuracy of 0.8676, 0.9173, 0.8061, 0.5981 and 0.9527, respectively. Comparing the performance of all of the implemented models, based on their evaluation matrices, we found that the Random Forest is the best-fitted approach for this sort of work. Random Forest is the best performer as it generalises this type of tabular data better than single estimators, which is expected from an ensemble method.
+| ML Model Name | Observation about model performance |
+|---|---|
+| Logistic Regression | Though the model has a good accuracy score, it also has a strong AUC (0.985). This indicates the model can make good probabilistic separation between classes. The performance struggles with the adjacent, borderline categories, which are not separable in this particular feature space. |
+| Decision Tree | Observing the evaluation metrics, this model performs well and reported 0.917 accuracy and 0.904 MCC. This model naturally handles the categorical and numerical features without scaling them and is able to save non-linear splits between neighboring obesity classes. |
+| KNN | Considering the evaluation metrics, it has achieved 0.806 accuracy for this particular dataset. This modelling approach is very much sensitive to the scaling and dimensionality of the 16 encoded features. This actually makes it noisier in calculating neighbours when it is compared with a tree-based model. |
+| Naïve Bayes | Considering other implemented models, this model is the poorest performer and achieved 0.598 accuracy and 0.546 MCC after evaluation. We have observed earlier that features like Height and Weight are highly correlated, and this violated its core assumption of feature independence. It is unable to differentiate adjacent obesity classes here. |
+| Random Forest (Ensemble) | Comparing the evaluation metrics of all implemented classification models, this model is the best-fitted approach for this dataset, and it resulted in the best score in terms of accuracy, AUC and MCC. As an ensemble of decision trees, it averages out overfitting issues and provides higher accuracy with nearly-perfect separation of classed whih is reflected in the AUC score. |
+
+**Overall Winner:** All of the implemented models are trained and fitted with the dataset. In this work, it was found that Logistic Regression, Decision Tree, KNN, Naive Bayes and Random Forest achieve accuracy of 0.8676, 0.9173, 0.8061, 0.5981 and 0.9527, respectively. Comparing the performance of all of the implemented models, based on their evaluation matrices, we found that the Random Forest (Ensemble) is the best-fitted approach for this sort of work. It has been observed that Random Forest (Ensemble) is the best performer as it generalises this type of tabular data better than single estimators, which is expected from an ensemble method.
 
 ## Live Streamlit App Link
 
@@ -59,3 +67,4 @@ https://classification-of-obesity-levels.streamlit.app/
         ├── encoders.pkl
         └── target_encoder.pkl
 ```
+
